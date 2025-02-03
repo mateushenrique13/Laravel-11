@@ -7,7 +7,11 @@
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>My Website</title>
+    <link rel="shortcut icon"
+        href="https://blog.devsense.com/bl-content/uploads/pages/f0c4b026993c19e9192d3cdad8564e0d/logo.png"
+        type="image/x-icon">
     <script src="https://cdn.tailwindcss.com"></script>
+
 </head>
 
 <body class="h-full">
