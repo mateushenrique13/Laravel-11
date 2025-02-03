@@ -1,6 +1,6 @@
 FROM php:8.3-fpm
 
-# Set user name
+# set username
 ARG user=Mateus
 ARG uid=1000
 
@@ -20,8 +20,8 @@ RUN apt-get update && apt-get install -y \
     pkg-config \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# Install PHP extensions
-RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd sockets
+# Install PHP extensions (AGORA COM INTL)
+RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd sockets intl
 
 # Install Redis extension
 RUN pecl install redis && docker-php-ext-enable redis
@@ -29,7 +29,7 @@ RUN pecl install redis && docker-php-ext-enable redis
 # Install Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# Create system user for running Composer and Artisan commands
+# Create system user
 RUN groupadd -g 33 www-data || true \
     && useradd -G www-data,root -u $uid -d /home/$user $user \
     && mkdir -p /home/$user/.composer \
@@ -42,3 +42,6 @@ WORKDIR /var/www
 COPY docker/php/custom.ini /usr/local/etc/php/conf.d/custom.ini
 
 USER $user
+
+# FINAL CMD PARA RODAR O PHP-FPM
+CMD ["php-fpm"]
