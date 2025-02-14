@@ -15,6 +15,7 @@
 
         <div>
             {{ $jobs->links() }}
+            {{-- O código {{ $jobs->links() }} é usado no Laravel para gerar a paginação de uma coleção de resultados, como uma lista de itens em uma página. --}}
         </div>
 
     </div>
