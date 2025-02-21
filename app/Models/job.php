@@ -9,7 +9,9 @@ class Job extends Model {
     use HasFactory;
     protected $table = 'job_listings';
 
-    protected $fillable = ['title', 'salary'];
+    // seeu usar protected $guarded = []; ele vai permitir que todos os campos sejam preenchidos
+    // se eu usar protected $fillable = ['title', 'salary']; ele vai permitir que apenas os campos title e salary sejam preenchidos
+    protected $fillable = ['employer_id','title', 'salary'];
 
     public function employer() {
         return $this->belongsTo(Employer::class);
